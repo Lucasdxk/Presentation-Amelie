@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Présentation interactive</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      margin: 0;
+      font-family: 'Fredoka', sans-serif;
+      background: linear-gradient(135deg, yellow, orange, red, deeppink, violet);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+      color: #333;
+    }
+
+    @keyframes gradient {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px 30px;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      color: white;
+      text-shadow: 2px 2px 6px #000;
+    }
+
+    .menu {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      padding: 20px;
+    }
+
+    .card {
+      max-width: 45%;
+      min-width: 120px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      width: 140px;
+      text-align: center;
+      padding: 20px 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .card:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .card h2 {
+      color: #f57c00;
+      font-size: 1em;
+      margin: 0;
+    }
+
+    .section {
+      display: none;
+      padding: 20px;
+      background: #fff;
+      border-top: 5px solid #f57c00;
+      border-radius: 10px;
+      margin: 20px;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .section h3 {
+      color: #f57c00;
+    }
+
+    .back-btn {
+      display: block;
+      margin: 20px auto;
+      background: #f57c00;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: #d94c00;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Bienvenue dans ma présentation</h1>
+</header>
+
+<div class="menu" id="menu">
+  <div class="card" onclick="show('parcours')"><h2>Parcours scolaire & pro</h2></div>
+  <div class="card" onclick="show('loisirs')"><h2>Loisirs</h2></div>
+  <div class="card" onclick="show('formation')"><h2>Formation</h2></div>
+  <div class="card" onclick="show('motivations')"><h2>Motivations</h2></div>
+  <div class="card" onclick="show('difficultes')"><h2>Difficultés</h2></div>
+  <div class="card" onclick="show('attentes')"><h2>Attentes</h2></div>
+</div>
+
+<div class="section" id="parcours">
+  <h3>Parcours scolaire & professionnel</h3>
+  <ul><li>Bac littéraire</li><li>STAPS</li><li>Décathlon</li><li>Volontaire</li><li>Concours pro</li><li>Coach sportif</li><li>Opérateur SSUAP</li></ul>
+  <button class="back-btn" onclick="goBack()">Retour</button>
+</div>
+<div class="section" id="loisirs">
+  <h3>Loisirs</h3>
+  <ul><li>Sport</li><li>Pole dance</li><li>Randonnée</li><li>Disney</li><li>Fête</li><li>Mère</li></ul>
+  <button class="back-btn" onclick="goBack()">Retour</button>
+</div>
+<div class="section" id="formation">
+  <h3>Expérience en formation</h3>
+  <ul><li>Maigre</li><li>Habitude prise de parole</li></ul>
+  <button class="back-btn" onclick="goBack()">Retour</button>
+</div>
+<div class="section" id="motivations">
+  <h3>Motivations</h3>
+  <ul><li>Secourisme</li><li>Partage</li><li>Transmission</li><li>Évolution</li></ul>
+  <button class="back-btn" onclick="goBack()">Retour</button>
+</div>
+<div class="section" id="difficultes">
+  <h3>Difficultés</h3>
+  <ul><li>APC</li><li>Manque confiance</li><li>Émotive</li><li>Jugement</li></ul>
+  <button class="back-btn" onclick="goBack()">Retour</button>
+</div>
+<div class="section" id="attentes">
+  <h3>Attentes</h3>
+  <ul><li>Méthodes pédagogiques</li><li>Outils</li><li>Bon moniteur</li></ul>
+  <button class="back-btn" onclick="goBack()">Retour</button>
+</div>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+  document.getElementById('menu').style.display = 'none';
+  document.getElementById(id).classList.add('active');
+}
+function goBack() {
+  document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+  document.getElementById('menu').style.display = 'flex';
+}
+</script>
+
+</body>
+</html>
